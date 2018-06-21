@@ -1,0 +1,10 @@
+#Dependencies:
+/bower_components/*
+/node_modules/*
+
+#Output distributed webApp
+/dist/*
+/docs/*
+
+#Build temp files:
+./package-lock.json

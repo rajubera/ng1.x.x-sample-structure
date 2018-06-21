@@ -1,0 +1,137 @@
+<div>
+    <div class="contact-info-header">
+        <span class="contact-info-header-text" ng-if="contactInfoCtrl.device.elder.SeniorData.Country == 'CN'">
+        <span ng-if="contactInfoCtrl.device.elder.SeniorData.LastName != 'null'">{{contactInfoCtrl.device.elder.SeniorData.LastName}}</span><!--
+     --><span ng-if="contactInfoCtrl.device.elder.SeniorData.FirstName != 'null'">{{contactInfoCtrl.device.elder.SeniorData.FirstName}}</span>
+        </span>
+        <span class="contact-info-header-text" ng-if="contactInfoCtrl.device.elder.SeniorData.Country != 'CN'">
+        <span ng-if="contactInfoCtrl.device.elder.SeniorData.FirstName != 'null'">{{contactInfoCtrl.device.elder.SeniorData.FirstName}} </span>
+        <span ng-if="contactInfoCtrl.device.elder.SeniorData.LastName != 'null'">{{contactInfoCtrl.device.elder.SeniorData.LastName}}</span>
+        <!-- <span ng-if="contactInfoCtrl.device.elder.SeniorId != 'null'"> - {{contactInfoCtrl.device.elder.SeniorId}} </span> -->
+        </span>
+        <a ng-click="contactInfoCtrl.closeModal()" class="pull-right contact-close-button">
+      <i class="fa fa-times"></i>
+    </a>
+        <a ng-click="contactInfoCtrl.editElderDetails()" class="pull-right mr5 contact-close-button">
+      <i class="fa fa-pencil"></i>
+    </a>
+    </div>
+    <div class="contact-info-body">
+        <div ng-if="!contactInfoCtrl.isEdit">
+            <div class="row margin0 mb10">
+                <div class="col-sm-5 text-bold" translate>{{'gender'}}</div>
+                <div class="col-sm-7" ng-switch on="contactInfoCtrl.device.elder.SeniorData.Gender">
+                    <div ng-switch-when="Male">
+                        <span translate>{{'male'}}</span>
+                    </div>
+                    <div ng-switch-when="Female">
+                        <span translate>{{'female'}}</span>
+                    </div>
+                    <div ng-switch-default>
+                      <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin0 mb10">
+                <div class="col-sm-5 text-bold" translate>{{'roomNumber'}}</div>
+                <div class="col-sm-7" ng-if="contactInfoCtrl.device.elder.SeniorData.RoomNumber != 'null'">{{contactInfoCtrl.device.elder.SeniorData.RoomNumber}}</div>
+            </div>
+            <div class="row margin0 mb10">
+                <div class="col-sm-5 text-bold" translate>{{'landline'}}</div>
+                <div class="col-sm-7" ng-if="contactInfoCtrl.device.elder.SeniorData.PhoneNumber != 'null'">{{contactInfoCtrl.device.elder.SeniorData.PhoneNumber}}</div>
+            </div>
+            <div class="row margin0 mb10">
+                <div class="col-sm-5 text-bold" translate>{{'phone'}}</div>
+                <div class="col-sm-7" ng-if="contactInfoCtrl.device.elder.SeniorData.MobileNumber != 'null'">{{contactInfoCtrl.device.elder.SeniorData.MobileNumber}}</div>
+            </div>
+            <div ng-repeat="relative in contactInfoCtrl.device.elder.SeniorData.Relatives">
+                <div class="relative-label">
+                    <span translate>{{'relative'}}</span>
+                    <span> {{$index+1}}</span>
+                </div>
+                <div class="row margin0 mb10">
+                    <div class="col-sm-5 text-bold" translate>{{'contactName'}}</div>
+                    <div class="col-sm-7" ng-if="relative.Name != 'null'">{{relative.Name}}</div>
+                </div>
+                <div class="row margin0 mb10">
+                    <div class="col-sm-5 text-bold" translate>{{'relationship'}}</div>
+                    <div class="col-sm-7" ng-if="relative.Relationship != 'null'">{{relative.Relationship}}</div>
+                </div>
+                <div class="row margin0 mb10">
+                    <div class="col-sm-5 text-bold" translate>{{'contactNumber'}}</div>
+                    <div class="col-sm-7" ng-if="relative.PhoneNumber != 'null'">{{relative.PhoneNumber}}</div>
+                </div>
+            </div>
+            <!--<div ng-repeat="device in contactInfoCtrl.device.elder.SeniorDevices"> -->
+                <div class="relative-label">
+                    <span translate>{{'device'}}</span>
+                  <!--  <span> {{$index+1}}</span> -->
+                </div>
+                <div class="row margin0 mb10">
+                    <div class="col-sm-5 text-bold" translate>{{'deviceType'}}</div>
+                    <div class="col-sm-7" >{{contactInfoCtrl.device.DeviceType}}</div>
+                    <!-- <div class="col-sm-7" ng-if="relative.Name != 'null'">{{relative.Name}}</div> -->
+                </div>
+                <div class="row margin0 mb10">
+                    <div class="col-sm-5 text-bold" translate>{{'deviceId'}}</div>
+                    <!--<div class="col-sm-7" ng-if="device != 'null'">{{device}}</div>-->
+                    <div class="col-sm-7" ng-if="contactInfoCtrl.device.DeviceId != 'null'">{{contactInfoCtrl.device.DeviceId}}</div>
+                </div>
+          <!--  </div> -->
+            <!--   <div class="relative-label">
+              <span translate>{{'contract'}}</span>
+            </div>
+            <div class="row margin0 mb10">
+                <div class="col-sm-5 text-bold" translate>{{'contractId'}}</div>
+                <div class="col-sm-7" >{{contactInfoCtrl.device.ContractId}}</div>
+            </div> -->
+        </div>
+        <div class="loginmodal-container edit-profile-details-page" ng-if="contactInfoCtrl.isEdit">
+            <div class="alert alert-danger dismsg" ng-if="contactInfoCtrl.errorMsg">
+                <strong><i class="fa fa-times-circle"></i></strong> {{contactInfoCtrl.errorMsg}}
+            </div>
+            <form name="editDetailsForm" novalidate ng-submit="contactInfoCtrl.saveDetails(editDetailsForm)">
+                <label>{{'firstname' | translate}}</label>
+                <input type="text" name="firstname" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.FirstName" placeholder="{{'firstname' | translate}}">
+                <label>{{'lastname' | translate}}</label>
+                <input type="text" name="lastname" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.LastName" placeholder="{{'lastname' | translate}}">
+                <div class="gender-block">
+                    <input type="radio" name="gender" value="Male" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.Gender"><span translate>{{'male'}}</span>
+                    <input type="radio" name="gender" value="Female" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.Gender"><span translate>{{'female'}}</span>
+                </div>
+                <label>{{'roomNumber' | translate}}</label>
+                <input type="text" name="roomnumber" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.RoomNumber" placeholder="{{'roomNumber' | translate}}">
+                <label>{{'landline' | translate}}</label>
+                <input type="text" name="landline" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.PhoneNumber" placeholder="{{'landline' | translate}}">
+                <label>{{'phone' | translate}}</label>
+                <input type="text" name="mobile" ng-model="contactInfoCtrl.editedDevice.elder.SeniorData.MobileNumber" placeholder="{{'phone' | translate}}">
+                <div ng-repeat="relative in contactInfoCtrl.editedDevice.elder.SeniorData.Relatives">
+                    <div class="relative-label edit-relative-label">
+                        <span translate>{{'relative'}}</span>
+                        <span> {{$index+1}}</span>
+                        <span class="fa fa-times clickable pull-right" ng-if="contactInfoCtrl.editedDevice.elder.SeniorData.Relatives.length > 1" title="{{'remove' | translate}}" ng-click="contactInfoCtrl.removeRelative($index)"></span>
+                    </div>
+                        <label>{{'contactName' | translate}}</label>
+                        <input type="text" name="relativeName_{{$index}}" ng-model="relative.Name" placeholder="{{'contactName' | translate}}">
+                        <label>{{'relationship' | translate}}</label>
+                        <input type="text" name="relationship_{{$index}}" ng-model="relative.Relationship" placeholder="{{'relationship' | translate}}">
+                        <label>{{'contactNumber' | translate}}</label>
+                        <input type="text" name="relativePhone_{{$index}}" ng-model="relative.PhoneNumber" placeholder="{{'contactNumber' | translate}}">
+                </div>
+                <button type="button" class="btn btn-success edit-details-button" ng-click="contactInfoCtrl.addRelative($event)">
+                    <span class="fa fa-plus mr5"></span>
+                    <span translate>{{'addRelative'}}</span>
+                </button>
+                <div class="text-right edit-details-wrapper">
+                    <button type="button" class="btn btn-primary edit-details-button" ng-click="contactInfoCtrl.saveDetails(editDetailsForm)" ng-disabled="contactInfoCtrl.isSaving">
+                        <i class="fa fa-spin fa-spinner mr5" ng-if="contactInfoCtrl.isSaving"></i>
+                        <span translate>{{'save'}}</span>
+                    </button>
+                    <button type="button" class="btn btn-default edit-details-button" ng-click="contactInfoCtrl.cancelEdit()" ng-disabled="contactInfoCtrl.isSaving">
+                        <span translate>{{'cancel'}}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

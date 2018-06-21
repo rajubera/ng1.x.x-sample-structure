@@ -1,0 +1,60 @@
+<div>
+  <div ng-if="homeCtrl.isLoadingUser" class="text-center loading-icon" flex>
+      <i class="fa fa-spinner fa-pulse"></i>
+  </div>
+  <div ng-if="!homeCtrl.isLoadingUser">
+  <header-bar></header-bar>
+  <nav class="navbar navbar-default no-radius margin0 app-subheader" ng-if="homeCtrl.selectedDashboard.DashboardId || homeCtrl.deviceList.length">
+    <div class="container-fluid">
+      <div class="navbar-header full-width margin0">
+        <div class="navbar-brand full-width app-subheader-container row margin0">
+         <div class="col-sm-7 col-xs-12">
+          <input type="text" ng-if="homeCtrl.selectedDashboard.DashboardId" class="community-name-input" ng-model="homeCtrl.communityName" placeholder="{{'communityName' | translate}}" ng-blur="homeCtrl.saveCommunity()"/>
+          </div>
+          <div class="col-sm-5 col-xs-12 filter-text-wrapper" ng-if="homeCtrl.deviceList.length">
+            <switch id="enabled" name="enabled" ng-model="homeCtrl.isDisconnectedHidden" class="green"></switch>
+            <span translate class="ml5">{{'hideDisconnectedText'}}</span>
+          </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+  <div ng-if="homeCtrl.online && homeCtrl.isConnected" class="home-user-list-container" layout="row" layout-wrap>
+    <div ng-if="homeCtrl.isLoading" class="text-center loading-icon" flex>
+      <i class="fa fa-spinner fa-pulse"></i>
+    </div>
+    <div ng-repeat="device in homeCtrl.deviceList | deviceFilter : homeCtrl.deviceStates : homeCtrl.isDisconnectedHidden | orderBy:'DeviceId'" class="user-status-container clickable" ng-if="!homeCtrl.isLoading && device.elder" ng-click="homeCtrl.openContactInfo(device)" flex="10">
+      <div class="user-status-block">
+        <!-- <img src="images/default1.png" alt="user avatar" class="user-image"> -->
+        <img ng-if="homeCtrl.isStatusAvailable(homeCtrl.deviceStates[device.DeviceId].ColorCode)" ng-src="{{homeCtrl.getStatusButton(homeCtrl.deviceStates[device.DeviceId].ColorCode)}}" alt="user status icon" class="user-status-image">
+        <h1 class="device-room-number" ng-if="device.elder.SeniorData.RoomNumber != 'null'">{{device.elder.SeniorData.RoomNumber}}</h1>
+        <h2 class="device-full-name" ng-if="device.elder.SeniorData.Country != 'CN'">
+            <span ng-if="device.elder.SeniorData.FirstName != 'null'">{{device.elder.SeniorData.FirstName}} </span>
+            <span ng-if="device.elder.SeniorData.LastName != 'null'">{{device.elder.SeniorData.LastName}}</span>
+        </h2>
+        <h2 class="device-full-name" ng-if="device.elder.SeniorData.Country == 'CN'">
+            <span ng-if="device.elder.SeniorData.LastName != 'null'">{{device.elder.SeniorData.LastName}}</span><!--
+         --><span ng-if="device.elder.SeniorData.FirstName != 'null'">{{device.elder.SeniorData.FirstName}}</span>
+        </h2>
+        <h2 class="device-salutation">
+           <span ng-if="(device.elder.SeniorData.Gender == 'Male')">
+             <span translate>{{'mr'}}</span>
+           </span>
+           <span ng-if="(device.elder.SeniorData.Gender == 'Female')">
+             <span translate>{{'mrs'}}</span>
+           </span>
+        </h2>
+      </div>
+    </div>
+    <div class="text-center" ng-if="!homeCtrl.isLoading && !homeCtrl.deviceList.length">
+      <span>{{homeCtrl.deviceLoadMessage}}</span>
+    </div>
+  </div>
+  <div ng-if="(homeCtrl.online == false) || (homeCtrl.isConnected == false)" class="text-center">
+    <img src="images/no-network.png" class="status-icon" alt="no network icon">
+    <div class="no-network-message">
+      <span translate>{{'noInternetText'}}</span>
+    </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta name="description" content="IoCare web platform">
+<html ng-app="careGiverApp">
+
+<head>
+  <!-- <base href="/"> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, maximum-scale = 1.0">
+  <meta name="fragment" content="!" />
+  <title ng-if="!pageTitle">Care Giver App</title>
+  <title ng-if="pageTitle">{{pageTitle}}</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="description" content="WE BRING SIMPLICITY TO INDEPENDENT LIVING">
+  <link href="css/vendor.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <script src="vendor.js"></script>
+  <script src="bundle.js"></script>
+</head>
+
+<body ng-class="bodyClasses" ng-controller="AppCtrl" ui-view>
+</body>
+
+</html>

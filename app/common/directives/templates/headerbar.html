@@ -1,0 +1,45 @@
+<nav class="navbar navbar-light no-radius margin0 app-header">
+    <div class="container-fluid">
+        <div class="row margin0">
+            <div class="col-md-5 col-sm-3 col-xs-6 navbar-header clickable" ng-click="headerCtrl.goToHome()">
+                <img src="images/imgpsh_fullsize.png" alt="logo" class="app-logo pull-left">
+                <a class="navbar-brand">
+                    <h1 class="header-logo-text" translate>{{'projectName'}}</h1>
+                </a>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 btn-group padding0 pull-right" uib-dropdown ng-if="headerCtrl.userData">
+                <div class="user-header-block pull-right" uib-dropdown-toggle>
+                    <div class="user-image" ng-style="{'background-image': 'url(' + ((headerCtrl.userData.gender == 'female')? 'images/default2.png' : 'images/default1.png') + ')'}"></div>
+                    <div class="user-name">{{headerCtrl.userData.name}}</div>
+                </div>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem" ng-click="headerCtrl.openEditProfile()">
+                        <a translate>{{'editProfile'}}</a>
+                    </li>
+                    <li role="menuitem" ng-click="headerCtrl.openChangePassword()">
+                        <a translate>{{'changePassword'}}</a>
+                    </li>
+                    <li role="menuitem" ng-click="headerCtrl.doLogout()">
+                        <a translate>{{'logout'}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-7 btn-group language-block" uib-dropdown>
+                <div uib-dropdown-toggle>
+                    <span translate>{{'language'}}</span>: 
+                    <span class="selected-lang">{{headerCtrl.selectedLang.name}}<i class="fa fa-sort-desc lang-dropdown" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem" ng-repeat="lang in headerCtrl.langOptions" ng-click="headerCtrl.changeLanguage(lang)"><a>{{lang.name}}</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2 col-xs-5 text-right">
+                <button class="btn btn-default app-intro-button" ng-click="headerCtrl.openInfoWindow()">
+                    <i class="glyphicon glyphicon-info-sign mr5"></i>
+                    <span translate>{{'instruction'}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

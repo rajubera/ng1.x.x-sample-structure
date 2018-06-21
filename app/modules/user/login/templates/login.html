@@ -1,0 +1,27 @@
+<div>
+<header-bar></header-bar>
+<div class="loginmodal-container">
+	<h1 translate>{{'login'}}</h1><br>
+	<div class="alert alert-danger dismsg" ng-if="loginCtrl.errorMsg">
+        <strong><i class="fa fa-times-circle"></i></strong> {{loginCtrl.errorMsg}}
+    </div>
+    <br />
+	<form name="loginForm" novalidate ng-submit="loginCtrl.doLogin(loginForm, loginCtrl.fields)">
+	    <label>{{'email' | translate}}</label>
+		<input type="email" name="email" ng-model="loginCtrl.fields.email" required placeholder="{{'email' | translate}}">
+		<p ng-if="(loginForm.$submitted || loginForm.email.$touched ) && (loginForm.email.$error.required || loginForm.email.$error.email)" class="text-danger">
+			<span translate>{{'emailError'}}</span>
+		</p>
+		<label>{{'password' | translate}}</label>
+		<input type="password" name="password" placeholder="{{'password' | translate}}" ng-model="loginCtrl.fields.password" required>
+		<p ng-if="(loginForm.$submitted || loginForm.password.$touched ) && (loginForm.password.$error.required )" class="text-danger">
+			<span translate>{{'passwordError'}}</span>
+		</p>
+		<button class="login loginmodal-submit" ng-click="loginCtrl.doLogin(loginForm, loginCtrl.fields)" ng-disabled="loginCtrl.isLoading"><i class="fa fa-spin fa-spinner" ng-if="loginCtrl.isLoading"></i> <span translate>{{'login'}}</span></button>
+	</form>
+					
+	<div class="login-help">
+		<a ui-sref="signup" translate>{{'register'}}</a> - <a class="clickable" ng-click="loginCtrl.goToActivateAccount()" translate>{{'activateAccount'}}</a> - <a class="clickable" ng-click="loginCtrl.goToForgetPassword()" translate>{{'forgotPassword'}}</a>
+	</div>
+</div>
+</div>

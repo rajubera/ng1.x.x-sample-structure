@@ -1,0 +1,40 @@
+<div class="loginmodal-container edit-profile-container">
+    <a ng-click="editProfileCtrl.closeModal()" class="pull-right info-close-button">
+    <i class="fa fa-times"></i></a>
+    <div ng-if="editProfileCtrl.isLoadingUser" class="text-center loading-icon" flex>
+        <i class="fa fa-spinner fa-pulse"></i>
+    </div>
+    <div ng-if="!editProfileCtrl.isLoadingUser">
+        <h1 translate>{{'editProfile'}}</h1>
+        <br>
+        <div class="alert alert-danger dismsg" ng-if="editProfileCtrl.errorMsg">
+            <strong><i class="fa fa-times-circle"></i></strong> {{editProfileCtrl.errorMsg}}
+        </div>
+        <br />
+        <form name="editProfileForm" novalidate ng-submit="editProfileCtrl.saveProfile(editProfileForm, editProfileCtrl.fields)">
+            <label>{{'name' | translate}}</label>
+            <input type="text" name="name" ng-model="editProfileCtrl.fields.name" required placeholder="{{'name' | translate}}">
+            <p ng-if="(editProfileForm.$submitted || editProfileForm.name.$touched ) && (editProfileForm.name.$error.required)" class="text-danger">
+                <span translate>{{'nameErrorMessage'}}</span>
+            </p>
+            <label>{{'email' | translate}}</label>
+            <input type="email" name="email" ng-model="editProfileCtrl.fields.email" required placeholder="{{'email' | translate}}" ng-disabled="true">
+            <div class="gender-block">
+                <input type="radio" name="gender" value="male" ng-model="editProfileCtrl.fields.gender"> <span translate>{{'male'}}</span>
+                <input type="radio" name="gender" value="female" ng-model="editProfileCtrl.fields.gender"> <span translate>{{'female'}}</span>
+            </div>
+            <label>{{'dob' | translate}}</label>
+            <input type="text" placeholder="{{'dob' | translate}}" uib-datepicker-popup="{{editProfileCtrl.dateFormat}}" ng-model="editProfileCtrl.fields.birthdate" is-open="editProfileCtrl.isDateOpened" datepicker-options="editProfileCtrl.dateOptions" ng-focus="editProfileCtrl.openDatePicker()" />
+            <label>{{'address' | translate}}</label>
+            <textarea name="address" ng-model="editProfileCtrl.fields.address" placeholder="{{'address' | translate}}" class="address-input"></textarea>
+            <label>{{'phone' | translate}}</label>
+            <input type="tel" name="phone" ng-model="editProfileCtrl.fields.phone_number" placeholder="{{'phone' | translate}} (+14155552671)">
+            <button class="login loginmodal-submit" ng-click="editProfileCtrl.saveProfile(editProfileForm, editProfileCtrl.fields)" ng-disabled="editProfileCtrl.isLoading"><i class="fa fa-spin fa-spinner" ng-if="editProfileCtrl.isLoading"></i>
+                <span translate>{{'save'}}</span>
+            </button>
+            <button class="login loginmodal-submit mt15 default-button" ng-click="editProfileCtrl.backToDashboard()" ng-disabled="editProfileCtrl.isLoading">
+                <span translate>{{'cancel'}}</span>
+            </button>
+        </form>
+    </div>
+</div>

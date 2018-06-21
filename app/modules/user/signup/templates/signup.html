@@ -1,0 +1,44 @@
+<div>
+<header-bar></header-bar>
+<div class="loginmodal-container">
+	<h1 translate>{{'signup'}}</h1><br>
+	<div class="alert alert-danger dismsg" ng-if="signupCtrl.errorMsg">
+        <strong><i class="fa fa-times-circle"></i></strong> {{signupCtrl.errorMsg}}
+    </div>
+    <br />
+	<form name="signupForm" novalidate ng-submit="signupCtrl.doSignup(signupForm, signupCtrl.fields)">
+	    <label>{{'name' | translate}}</label>
+	    <input type="text" name="name" ng-model="signupCtrl.fields.name" required placeholder="{{'name' | translate}}">
+		<p ng-if="(signupForm.$submitted || signupForm.name.$touched ) && (signupForm.name.$error.required)" class="text-danger">
+			<span translate>{{'nameErrorMessage'}}</span>
+		</p>
+		<label>{{'email' | translate}}</label>
+		<input type="email" name="email" ng-model="signupCtrl.fields.email" required placeholder="{{'email' | translate}}">
+		<p ng-if="(signupForm.$submitted || signupForm.email.$touched ) && (signupForm.email.$error.required || signupForm.email.$error.email)" class="text-danger">
+			<span translate>{{'emailError'}}</span>
+		</p>
+		<label>{{'password' | translate}}</label>
+		<input type="password" name="password" placeholder="{{'password' | translate}}" ng-model="signupCtrl.fields.password" required>
+		<p ng-if="(signupForm.$submitted || signupForm.password.$touched ) && (signupForm.password.$error.required )" class="text-danger">
+			<span translate>{{'passwordError'}}</span>
+		</p>
+		<label>{{'confirmPassword' | translate}}</label>
+		<input type="password" name="confirmPassword" placeholder="{{'confirmPassword' | translate}}" ng-model="signupCtrl.fields.confirmPassword" required compare-to="signupCtrl.fields.password">
+		<p ng-if="(signupForm.$submitted || signupForm.confirmPassword.$touched )" class="text-danger">
+		<span ng-if="signupForm.confirmPassword.$error.required">
+			<span translate>{{'confirmPasswordError'}}</span>
+		</span>
+		<span ng-if="!signupForm.confirmPassword.$error.required && signupForm.confirmPassword.$error.compareTo">
+			<span translate>{{'passwordMismatchError'}}</span>
+		</span>
+		</p>
+		<button class="login loginmodal-submit" ng-click="signupCtrl.doSignup(signupForm, signupCtrl.fields)" ng-disabled="signupCtrl.isLoading"><i class="fa fa-spin fa-spinner" ng-if="signupCtrl.isLoading"></i> 
+         <span translate>{{'signup'}}</span>
+		</button>
+	</form>
+					
+	<div class="login-help">
+		<a ui-sref="login" translate>{{'login'}}</a> - <a ui-sref="forget-password" translate>{{'forgotPassword'}}</a>
+	</div>
+</div>
+</div>

@@ -1,0 +1,384 @@
+body {
+    font: 15px arial, sans-serif;
+    background-color: #eaeaea;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.margin0 {
+    margin: 0px !important;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.padding15 {
+    padding: 15px;
+}
+.padding0 {
+    padding: 0px !important;
+}
+.no-radius {
+    border-radius: 0px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.app-header {
+    background-color: #ccc;
+    border-bottom: 1px solid #CACACA;
+    height: 60px;
+}
+
+.app-subheader {
+    min-height: 40px;
+    height: 40px;
+}
+
+.app-subheader-container {
+    padding: 10px;
+}
+
+.header-logo-text {
+    color: #777;
+    font-size: 23px;
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+.community-name-input {
+    border: none;
+    border-bottom: 1px solid #777;
+    outline: none;
+    background: transparent;
+}
+
+.filter-text-wrapper {
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.app-logo {
+    height: 50px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.app-intro-button {
+    margin-top: 10px;
+}
+
+.user-add-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+}
+
+.user-remove-button {
+    margin-top: 10px;
+    float: right;
+    margin-right: 10px;
+}
+
+.home-user-list-container {
+    padding: 2px 5px;
+}
+
+.loading-icon {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.status-icon {
+    width: 50px;
+    margin-top: 20px;
+}
+
+.no-network-message {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.user-status-container {
+    display: inline-block;
+    width: 10%;
+    vertical-align: top;
+}
+
+.user-status-block {
+    min-height: 130px;
+    margin: 3px;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: center;
+    background-color: #fafafa;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+}
+
+.user-image {
+    width: 35px;
+    margin-bottom: 2px;
+}
+
+.user-status-image {
+    width: 35px;
+    margin-bottom: 2px;
+}
+
+.device-salutation {
+    font-weight: bold;
+    font-size: 14px;
+    color: #999;
+}
+
+.device-full-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.device-first-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.device-last-name {
+    color: #999;
+    margin-top: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.device-room-number {
+    color: #999;
+    margin-top: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.info-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.info-close-button {
+    color: #ddd;
+}
+
+.info-list-item {
+    list-style-type: disc;
+    margin-left: 16px;
+    margin-top: 5px;
+}
+
+.info-window-content {
+    margin-bottom: 15px;
+}
+
+.info-window-image {
+    width: 300px;
+}
+
+.info-window-device-image {
+    width: 200px;
+}
+
+.contact-info-header {
+    background: #d5d5d5;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 10px 15px;
+    min-height: 46px;
+}
+
+.contact-info-header-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contact-close-button {
+    color: #aaa;
+    font-size: 23px;
+    position: relative;
+    top: -2px;
+}
+
+.contact-info-body {
+    padding: 15px;
+}
+
+.user-header-block {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.user-image {
+    height: 35px;
+    background-size: contain;
+    margin-right: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.language-block {
+    margin-top: 18px;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.language-block .selected-lang {
+    font-weight: 700;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.language-block .selected-lang .lang-dropdown{
+    margin-left: 5px;
+    position: relative;
+    top: -3px;
+}
+
+.uib-datepicker-popup .uib-button-bar {
+    display: none;
+}
+
+.edit-profile-details-page {
+    padding: 0px !important;
+    margin: 0px !important;
+    background-color: #fff !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+}
+
+.relative-label {
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.edit-relative-label {
+    padding-left: 0px;
+}
+
+.edit-details-button {
+    width: auto !important;
+}
+
+.edit-details-wrapper {
+    border-top: 1px solid #bbb;
+    padding-top: 15px;
+}
+
+.edit-details-wrapper button {
+    display: inline;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 767px) {
+    .app-header {
+        height: 110px;
+    }
+    .app-subheader-container {
+        height: 85px;
+        text-align: center;
+    }
+    .app-subheader {
+        min-height: 85px;
+        height: 85px;
+    }
+    .filter-text-wrapper {
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-logo-text {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .language-block {
+        float: right;
+        text-align: center;
+    }
+    .app-subheader-container {
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 1200px) {
+    .user-status-container {
+        width: 12.5%;
+    }
+}
+
+@media (max-width: 992px) {
+    .user-status-container {
+        width: 16.665%;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-status-container {
+        width: 20%;
+    }
+}
+
+@media (max-width: 600px) {
+    .user-status-container {
+        width: 25%;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-status-container {
+        width: 33%;
+    }
+}
+
+@media (max-width: 360px) {
+    .user-status-container {
+        width: 50%;
+    }
+}
+.btn-group.open .dropdown-toggle{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}

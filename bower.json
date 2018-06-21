@@ -1,0 +1,24 @@
+{
+  "name": "NG1.x.x-sample",
+  "description": "Base AngularJS application with gulp and browserify",
+  "main": "app.js",
+  "authors": "Raju Bera",
+  "private": false,
+  "devDependencies": {
+    "angular-mocks": "~1.4.2"
+  },
+  "dependencies": {
+    "angular": "~1.4.2",
+    "angular-bootstrap": "",
+    "angular-ui-router": "~0.2.13",
+    "angular-animate": "~1.4.2",
+    "angular-sanitize": "~1.4.2",
+    "angular-cookies": "~1.4.2",
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery": "~2.1.4",
+    "SoundManager2": "https://github.com/scottschiller/SoundManager2.git",
+    "angular-translate": "~2.12.1",
+    "angular-ui-switch": "0.1.1"
+  }
+}

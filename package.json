@@ -1,0 +1,87 @@
+{
+  "name": "Ng-1.x-sample",
+  "version": "0.0.1",
+  "description": "sample app structure",
+  "main": "app.js",
+  "author": "Raju Bera",
+  "scripts": {
+    "start": "gulp build",
+    "doc": "gulp doc",
+    "start-prod": "gulp build-prod",
+    "dev": "gulp build-prod-dev"
+  },
+  "browserify-shim": {
+    "angular": {
+      "exports": "angular"
+    },
+    "awsCognitoSdk": {
+      "exports": "awsCognitoSdk"
+    },
+    "amazonCognitoIdentity": {
+      "exports": "amazonCognitoIdentity"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "partialify",
+      "debowerify"
+    ]
+  },
+  "browser": {
+    "angular": "./bower_components/angular/angular.js",
+    "awsCognitoSdk": "./node_modules/amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js",
+    "amazonCognitoIdentity": "./node_modules/amazon-cognito-identity-js/dist/amazon-cognito-identity.min.js"
+  },
+  "devDependencies": {
+    "bower": "latest",
+    "browserify": "5.13.1",
+    "browserify-istanbul": "0.2.1",
+    "debowerify": "1.5.0",
+    "del": "2.2.2",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.1",
+    "gulp-concat": "2.6.1",
+    "gulp-connect": "2.3.1",
+    "gulp-if": "1.2.5",
+    "gulp-jscs": "2.0.0",
+    "gulp-jshint": "1.12.0",
+    "gulp-minify-css": "1.2.4",
+    "gulp-notify": "2.2.0",
+    "gulp-sourcemaps": "1.12.0",
+    "gulp-streamify": "1.0.2",
+    "gulp-uglify": "1.5.4",
+    "jshint-stylish": "2.2.1",
+    "notify-send": "0.1.2",
+    "partialify": "3.1.6",
+    "run-sequence": "1.2.2",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0",
+    "watchify": "3.11.0"
+  },
+  "dependencies": {
+    "amazon-cognito-identity-js": "1.31.0",
+    "aws-iot-device-sdk": "2.1.0",
+    "aws-sdk": "2.188.0",
+    "browserify-shim": "3.8.14",
+    "core-util-is": "1.0.2",
+    "escape-string-regexp": "1.0.5",
+    "graceful-fs": "4.1.11",
+    "gulp-jsdoc3": "1.0.1",
+    "gulp-open": "3.0.1",
+    "gulp-serve": "1.4.0",
+    "inherits": "2.0.3",
+    "isarray": "2.0.2",
+    "minimatch": "3.0.4",
+    "partialify": "3.1.6",
+    "readable-stream": "2.3.3",
+    "through": "2.3.8",
+    "watchify": "3.11.0",
+    "xtend": "4.0.1"
+  },
+  "resolutions": {
+    "natives": "1.1.0"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
